@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hệ thống Nhân viên MCI</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="{{ url_for('static',filename='plugins/fontawesome-free/css/all.min.css') }}">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="{{ url_for('static',filename='plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{{ url_for('static',filename='dist/css/adminlte.min.css') }}">
+</head>
+<body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+<div class="wrapper">
+
+  <!-- Preloader -->
+  <div class="preloader flex-column justify-content-center align-items-center">
+    <img class="animation__wobble" src="{{ url_for('static',filename='dist/img/logomci.png') }}" alt="MCILogo" height="60" width="60">
+  </div>
+
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-dark">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="#" class="nav-link">Chào mừng bạn đến với hệ thống Nhân viên của Học viện đào tạo lập trình MCI</a>
+    </ul>
+
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+      <!-- Navbar Search -->
+      <!-- Notifications Dropdown Menu -->
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="far fa-bell"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <span class="dropdown-item dropdown-header">Không có thông báo nào</span>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+          <i class="fas fa-expand-arrows-alt"></i>
+        </a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="fas fa-th-large"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <a href = "#">
+          <span class="dropdown-item dropdown-header">Đăng xuất</span>
+          </a>
+        </div>
+      </li>
+    </ul>
+  </nav>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="/" class="brand-link">
+      <img src="{{ url_for('static',filename='dist/img/logomci.png') }}" alt="MCILogo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">MCI Việt Nam</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="{{ url_for('static',filename='dist/img/user2.png') }}" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="#" class="d-block">Hello, Long</a>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <p>
+                eCRM
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <p>
+                    Khách hàng
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <p>Khách hàng chưa thanh toán</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <p>Khách hàng đã thanh toán</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <p>Khách hàng tiềm năng</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <p>Quản lý đơn hàng</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <p>Quản lý công nợ</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <p>
+                eMKT
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <p>Không gian trải nghiệm</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <p>Quản lý blog</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <p>Google Lead</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <p>Performance Matrix</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <p>
+                eHRM
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <p>
+                    Quản lý tuyển dụng
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <p>Danh sách CV</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <p>Đăng tin tuyển dụng</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <p>Danh sách tuyển dụng</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <p>Thị trường tuyển dụng</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <p>Đăng kí lịch làm việc</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <p>Đăng kí nghỉ phép</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <p>Danh sách nhân sự</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <p>
+                Giảng viên
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <p>
+                    Giảng dạy
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <p>Thống kê giảng dạy</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <p>Duyệt chấm công</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <p>Duyệt dạy thử</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <p>
+                      Lớp học
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="#" class="nav-link">
+                        <p>Thời khoá biểu</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="#" class="nav-link">
+                        <p>Tạo lớp học</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="#" class="nav-link">
+                        <p>Quản lý lớp học</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="#" class="nav-link">
+                        <p>Quản lý đăng ký</p>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <p>
+                Cộng tác viên
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <p>Danh sách cộng tác viên</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <p>Hướng dẫn bán hàng</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <p>
+                Học viên
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/mlmodel" class="nav-link">
+                  <p>Dự báo Feedback học viên
+                    <span class="right badge badge-danger">New</span>
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <p>
+                    Chứng chỉ
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <p>Tạo chứng chỉ</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <p>Duyệt chứng chỉ</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <p>Danh sách chứng chỉ</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <p>
+                      Media
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="#" class="nav-link">
+                        <p>Thư viện video</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="#" class="nav-link">
+                        <p>Đăng tải video</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="#" class="nav-link">
+                        <p>Thư viện sách</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="#" class="nav-link">
+                        <p>Đăng tải sách</p>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <p>
+                      Quản lý học viên
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="#" class="nav-link">
+                        <p>Điểm danh</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="#" class="nav-link">
+                        <p>Tạo lớp học</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="#" class="nav-link">
+                        <p>Quản lý khảo sát</p>
+                      </a>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <p>Trợ giúp học viên</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/student" class="nav-link">
+                    <p>Feedback học viên</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <p>Ngân hàng đề thi</p>
+                  </a>
+                </li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <p>
+                Gửi yêu cầu IT
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <p>Tạo yêu cầu</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <p>Danh sách yêu cầu</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <p>
+                Quản lý người dùng
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <p>Tạo tài khoản user</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+    
+            </ul>
+          </li>
+
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">Dự báo Feedback Học viên</h1>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+   
+              <!-- general form elements -->
+              <div class="card card-primary">
+                <div class="card-header">
+                  <h3 class="card-title">Mô hình dự đoán kết quả Học viên</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                  <h4>Nhập đủ tất cả các thông tin</h4>
+                  <form role="form" method="POST" action="{{ url_for('predict')}}">
+                    <div class="form-group">
+                      <label for="exampleSelectBorderWidth2">Tên bộ môn</label>
+                      <select class="custom-select form-control-border border-width-2" id="course" name="course" required>
+                        <option value="999" disabled selected hidden>Please Choose...</option>
+                        <option value="5">SQL</option>
+                        <option value="2">PowerBI</option>
+                        <option value="3">Python</option>
+                        <option value="4">R</option>
+                        <option value="1">Excel</option>
+                        <option value="6">VBA</option>
+                        <option value="0">IT Business Analyst</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleSelectBorderWidth2">Tên giảng viên</label>
+                      <select class="custom-select form-control-border border-width-2" id="lecturer" name="lecturer" placeholder="Tên giảng viên" required>
+                        <option value="999" disabled selected hidden>Please Choose...</option>
+                        <option value="41">Viet Anh Nguyen vietanh</option>
+                        <option value="27">Phiên Huỳnh Ngọc PhienHN</option>
+                        <option value="6">Hạnh Trần Thị Hồng hanhtth</option>
+                        <option value="7">Hồng Đỗ Bích Hongdb</option>
+                        <option value="21">Nguyễn Mạnh Trường nmtruong</option>
+                        <option value="18">Minh Đinh Công minhdc2</option>
+                        <option value="36">Toàn Bùi Đức toanbui</option>
+                        <option value="8">Khanh Nguyen khanhnguyen94</option>
+                        <option value="2">Chuong Nguyen chuongnm</option>
+                        <option value="5">Hùng Nguyễn Mạnh hungnm</option>
+                        <option value="30">Thi Nguyễn Thị Minh Thi</option>
+                        <option value="34">Tiến Ngô Đức ndtien</option>
+                        <option value="14">Linh Lương Mỹ Linh.ltm</option>
+                        <option value="4">Huy Thạch Quang huytq</option>
+                        <option value="17">Lạc Phạm Xuân nguoibanso25</option>
+                        <option value="13">Le Thao thaolt.ba</option>
+                        <option value="25">Nhi Nguyễn Hoàng nhinguyen1807</option>
+                        <option value="40">Tuong Nguyen nguyendinhtuong</option>
+                        <option value="35">Toan Doan Manh toandm</option>
+                        <option value="11">Kim Dung Ha dung.hakim</option>
+                        <option value="42">Vũ Nguyễn Anh vuna.vcb</option>
+                        <option value="12">LA QUOC LUONG laquocluong</option>
+                        <option value="33">Tiến Nguyễn Đức ndtien</option>
+                        <option value="38">Trung Lê Xuân TrungLe</option>
+                        <option value="0">Bình Đinh Công binhdinh</option>
+                        <option value="32">Thái Doãn Hoàng thaidh</option>
+                        <option value="45">Đinh Quang Vũ qvdinh</option>
+                        <option value="44">Vũ Đinh VuDinh</option>
+                        <option value="19">Nghị Tống Châu tongnghi</option>
+                        <option value="43">Vũ Ngô Định vu.ngo</option>
+                        <option value="9">Khoa Nguyễn Võ Đăng nkhoa1987</option>
+                        <option value="31">Thinh Do Phu dpthinh</option>
+                        <option value="3">Hieu Nguyen hieunguyen1496@gmail.com</option>
+                        <option value="10">Khánh Tạ khanhta</option>
+                        <option value="29">Thanh Phan Duy thanhmk4@gmail.com</option>
+                        <option value="24">Ngô Hoàng Quốc Tân tanquoc0309</option>
+                        <option value="20">Nguyen Huu Minh minhhuunguyen</option>
+                        <option value="37">Toàn Vũ vutoan</option>
+                        <option value="1">Bùi Tú Tubt</option>
+                        <option value="15">Linh Tran linhtrankt53</option>
+                        <option value="39">Trực Hoàng Đỗ Can Truchdc</option>
+                        <option value="16">Lê Như Gia Bình lenhugiabinh@gmail.com</option>
+                        <option value="28">Phạm Nguyên Hạnh Hanhpn</option>
+                        <option value="46">Đỗ Văn Hiếu dohieu6868</option>
+                        <option value="26">Phan Duy Thanh thanhmk4@gmail.com</option>
+                        <option value="23">Nguyễn Tiến Đình dinhuit</option>
+                        <option value="22">Nguyễn Thị Lam Phương Phuongntl</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleSelectBorderWidth2">Đã nắm chắc kiến thức chưa?</label>
+                      <select class="custom-select form-control-border border-width-2" id="understanding" name="understanding" required>
+                        <option value="999" disabled selected hidden>Please Choose...</option>
+                        <option value="2">Đã nắm chắc</option>
+                        <option value="1">Còn một số chỗ chưa chắc</option>
+                        <option value="0">Chưa nắm được gì</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleSelectBorderWidth2">Expertise level (1-5)</label>
+                      <select class="custom-select form-control-border border-width-2" id="expertise" name="expertise" required>
+                        <option value="999" disabled selected hidden>Please Choose...</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleSelectBorderWidth2">Enthusiastic level (1-5)</label>
+                      <select class="custom-select form-control-border border-width-2" id="enthusiastic" name="enthusiastic" required>
+                        <option value="999" disabled selected hidden>Please Choose...</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleSelectBorderWidth2">Approachable level (1-5)</label>
+                      <select class="custom-select form-control-border border-width-2" id="approachable" name="approachable" required>
+                        <option value="999" disabled selected hidden>Please Choose...</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleSelectBorderWidth2">Satisfaction level (1-5)</label>
+                      <select class="custom-select form-control-border border-width-2" id="satisfaction" name="satisfaction" required>
+                        <option value="999" disabled selected hidden>Please Choose...</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button> {{ prediction_text }}
+                  </div>
+              </form>
+          </div>
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+
+  <!-- Main Footer -->
+  <footer class="main-footer">
+    <strong>Copyright &copy; 2021 <a href="https://mcivietnam.com">Học viện Đào tạo lập trình MCI</a>.</strong>
+    All rights reserved.
+  </footer>
+</div>
+<!-- ./wrapper -->
+
+<!-- REQUIRED SCRIPTS -->
+<!-- jQuery -->
+<script src="{{ url_for('static',filename='plugins/jquery/jquery.min.js') }}"></script>
+<!-- Bootstrap -->
+<script src="{{ url_for('static',filename='plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<!-- overlayScrollbars -->
+<script src="{{ url_for('static',filename='plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
+<!-- AdminLTE App -->
+<script src="{{ url_for('static',filename='dist/js/adminlte.j') }}s"></script>
+
+<!-- PAGE PLUGINS -->
+<!-- jQuery Mapael -->
+<script src="{{ url_for('static',filename='plugins/jquery-mousewheel/jquery.mousewheel.js') }}"></script>
+<script src="{{ url_for('static',filename='plugins/raphael/raphael.min.js') }}"></script>
+<script src="{{ url_for('static',filename='plugins/jquery-mapael/jquery.mapael.min.js') }}"></script>
+<script src="{{ url_for('static',filename='plugins/jquery-mapael/maps/usa_states.min.js') }}"></script>
+<!-- ChartJS -->
+<script src="{{ url_for('static',filename='plugins/chart.js/Chart.min.js') }}"></script>
+
+<!-- AdminLTE for demo purposes -->
+<script src="{{ url_for('static',filename='dist/js/demo.js') }}"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="{{ url_for('static',filename='dist/js/pages/dashboard2.js') }}"></script>
+</body>
+</html>
